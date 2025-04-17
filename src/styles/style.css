@@ -1,0 +1,393 @@
+:root {
+    --primary: #9a8ce2;
+    --bg: #130f26;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Roboto Mono", serif;
+    background-color: #130f26;
+    color: #130f26;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 7%;
+    background-color: var(--bg);
+    border-bottom: 0.5px solid #a5a595;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  }
+  
+  .navbar .logo img {
+    width: 150px;
+    height: auto;
+    margin-left: 1rem;
+  }
+  
+  .navbar .navbar-nav a {
+    color: #fff;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0 1rem;
+  }
+
+  .navbar .navbar-nav .active {
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .navbar .navbar-nav a:hover {
+    color: var(--primary);
+  }
+  
+  .navbar .navbar-nav a::after {
+    content: "";
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid var(--primary);
+    transform: scaleX(0);
+    transition: 0.2s linear;
+  }
+  
+  .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.5);
+  }
+  
+  /* .navbar .navbar-extra a {
+    color: #fff;
+    margin: 0 0.5rem;
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  }
+  
+  .navbar .navbar-extra a:hover {
+    color: var(--bg);
+  } */
+  
+  #hamburger-menu {
+    display: none;
+  }
+
+/* Section */
+.home {
+    padding: 10rem 7% 1.4rem;
+    display: flex;
+    flex-direction: column; /* Susun elemen secara vertikal */
+    align-items: center; /* Pusatkan secara horizontal */
+    text-align: center; /* Pastikan teks di tengah */
+    gap: 1rem; /* Beri jarak antara gambar dan teks */
+  }
+  
+  .home h1 {
+    font-family: "Inter", serif;
+    font-style: italic;
+    font-size: 2rem;
+    margin-top: 0.5rem; 
+    font-weight: 800;
+    color: #fff;
+  }
+  
+  .home img {
+    margin-top: 2rem;
+    align-items: center;
+    width: 300px;
+    height: auto;
+    overflow: visible;
+    height: auto;
+  }
+  
+  .home h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: #a5a595;
+  }
+
+  .home h3 {
+    font-family: "Inter", serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: #a5a595;
+  }
+  
+  .home p {
+    font-family: "Inter", serif;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    font-weight: 200;
+    color: #a5a595;
+  }
+
+  .home span {
+    color: var(--primary);
+  }
+
+
+/* Style Button Group */
+.button-group {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* Style Tombol */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* Hover Effect */
+.btn:hover {
+  background-color: var(--primary);
+  color: #130f26;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+/* Footer */
+footer {
+  background-color: var(--bg);
+  border-top: 0.5px solid #a5a595;
+  text-align: center;
+  padding: 1rem 0 1rem;
+  margin-top: 3rem;
+  padding-bottom: 0rem;
+}
+
+footer .row p {
+  font-weight: 400;
+  font-size: 12px;
+  color: #fff;
+}
+
+footer .row .credit {
+  margin-top: 5px;
+  font-weight: 200;
+  font-size: 10px;
+  color: #fff;
+}
+
+footer .row .copyright-symbol {
+  font-size: 12px; /* Ukuran simbol hak cipta */
+}
+
+.heart-icon {
+  color: red; /* Mengisi ikon dengan warna merah */
+  width: 12px; /* Ukuran ikon */
+  height: 12px; /* Ukuran ikon */
+  fill: red; /* Mengisi warna ikon dengan merah */
+}
+
+.footer-link {
+  text-decoration: none; /* Menghapus garis bawah */
+  color: #fff; /* Warna teks */
+  font-weight: 400;
+}
+
+.footer-link:hover {
+  color: var(--primary); /* Mengubah warna teks saat hover */
+}
+
+footer .socials {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center; /* Pusatkan ikon */
+  align-items: center; /* Sejajarkan ikon */
+  gap: 10px; /* Beri jarak antar ikon */
+  flex-wrap: wrap; /* Mencegah ikon keluar dari baris */
+}
+
+footer .socials a {
+  color: #fff;
+}
+
+footer .socials a:hover {
+  color: var(--primary);
+}
+
+footer .credit {
+  font-size: 0.8rem;
+}
+
+footer .credit a {
+  color: var(--bg);
+  font-weight: 700;
+}
+
+/* Modal Animation */
+@keyframes animateModal {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.modal-container .close-icon {
+  position: absolute;
+  right: 1rem;
+}
+
+.modal-content {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.modal-content img {
+  height: 20rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+}
+
+.modal-content a {
+  display: flex;
+  gap: 1rem;
+  width: 12rem;
+  background-color: var(--primary);
+  color: #fff;
+  margin-top: 1rem;
+  padding: 1rem 1.6rem;
+}
+
+/* Media Queries */
+
+/* Laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: var(--bg);
+    width: 30rem;
+    height: 100vh;
+    transition: 0.3s;
+  }
+
+  .navbar .navbar-nav.active {
+    right: 0;
+  }
+
+  .navbar .navbar-nav a {
+    color: #fff;
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .navbar .navbar-nav a::after {
+    transform-origin: 0 0;
+  }
+
+  .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+  }
+
+  .navbar .search-form {
+    width: 90%;
+  }
+
+  .about .row {
+    flex-wrap: wrap;
+  }
+
+  .about .row .about-img {
+    /* flex: 1 1 45rem; */
+    height: auto;
+    border-radius: 5%;
+    box-shadow: 0px 25px 20px 0px #243040;
+  }
+
+  .about .row .about-img img {
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about .row .content {
+    padding: 0;
+  }
+
+  .about .row .content h3 {
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .about .row .content p {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}
+
+/* Mobile Phone */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+}

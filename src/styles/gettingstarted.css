@@ -1,0 +1,192 @@
+:root {
+    --primary: #9a8ce2;
+    --bg: #130f26;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Roboto Mono", serif;
+    background-color: #130f26;
+    color: #130f26;
+    min-height: 100vh;
+}
+
+/* Section */
+.gettingstarted {
+    padding: 10rem 7% 1.4rem;
+    display: flex;
+    flex-direction: column; /* Susun elemen secara vertikal */
+    align-items: center; /* Pusatkan secara horizontal */
+    text-align: center; /* Pastikan teks di tengah */
+    gap: 1rem; /* Beri jarak antara gambar dan teks */
+  }
+  
+  .gettingstarted h1 {
+    font-family: "Roboto Mono", serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+  }
+  
+  .gettingstarted h3 {
+    font-family: "Roboto Mono", serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #a5a595;
+  }
+
+  .gettingstarted span {
+    color: var(--primary);
+  }
+
+  .gettingstarted p {
+    text-align: center; /* Atur agar p sebelum h2 tetap rata tengah */
+    font-family: "Inter", serif;
+    font-size: 1.1rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: #a5a595;
+    width: 100%;
+    margin-bottom: 0.8rem;
+  }
+  
+  .gettingstarted h2 {
+    text-align: left;
+    font-family: "Roboto Mono", serif;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    width: 100%;
+  }
+  
+  /* Selektor khusus untuk p setelah h2 */
+  .gettingstarted h2 + p  {
+    text-align: left; /* Pastikan teks pada p setelah h2 rata kiri */
+    font-family: "Inter", serif;
+    font-size: 1.1rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: #a5a595;
+    width: 100%;
+    margin-bottom: 0.8rem;
+  }
+  
+  .gettingstarted a {
+    color: var(--primary);
+  }
+  
+  .gettingstarted a:hover {
+    color: #5545a1;
+  }
+
+/* Media Queries */
+
+/* Laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: var(--bg);
+    width: 30rem;
+    height: 100vh;
+    transition: 0.3s;
+  }
+
+  .navbar .navbar-nav.active {
+    right: 0;
+  }
+
+  .navbar .navbar-nav a {
+    color: #fff;
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .navbar .navbar-nav a::after {
+    transform-origin: 0 0;
+  }
+
+  .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+  }
+
+  .navbar .search-form {
+    width: 90%;
+  }
+
+  .about .row {
+    flex-wrap: wrap;
+  }
+
+  .about .row .about-img {
+    /* flex: 1 1 45rem; */
+    height: auto;
+    border-radius: 5%;
+    box-shadow: 0px 25px 20px 0px #243040;
+  }
+
+  .about .row .about-img img {
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about .row .content {
+    padding: 0;
+  }
+
+  .about .row .content h3 {
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .about .row .content p {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}
+
+/* Mobile Phone */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+}
