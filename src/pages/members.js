@@ -15,24 +15,37 @@ function Members() {
     bio: "",
     position: ""
   });
-
-  const user = { username: 'admin123', role: 'admin' }; // ganti nanti dengan context/auth
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
-    fetchMembers();
+
+    // 1) Fetch current user
+    axios
+      .get("http://localhost:5000/api/auth/me", { withCredentials: true })
+      .then(res => setUser(res.data))
+      .catch(() => setUser(null))
+      .finally(() => {
+        // 2) Setelah user ter-set (atau null), load members
+        fetchMembers();
+      });
   }, []);
 
   const fetchMembers = () => {
-    axios.get("http://localhost:5000/api/members", { withCredentials: true })
+    axios
+      .get("http://localhost:5000/api/members", { withCredentials: true })
       .then(res => setMembers(res.data))
       .catch(err => console.error(err));
   };
 
-  const handleDelete = (id) => {
+  const isAdmin = user?.role === "admin";
+
+  const handleDelete = id => {
+    if (!isAdmin) return;
     if (window.confirm("Are you sure?")) {
-      axios.delete(`http://localhost:5000/api/members/${id}`, { withCredentials: true })
-        .then(() => fetchMembers())
+      axios
+        .delete(`http://localhost:5000/api/members/${id}`, { withCredentials: true })
+        .then(fetchMembers)
         .catch(err => console.error(err));
     }
   };
@@ -43,27 +56,36 @@ function Members() {
     setShowModal(true);
   };
 
-  const openEditModal = (member) => {
+  const openEditModal = member => {
     setForm(member);
     setEditingMember(member);
     setShowModal(true);
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
+    if (!isAdmin) return;
 
     const req = editingMember
-      ? axios.put(`http://localhost:5000/api/members/${editingMember.id}`, form, { withCredentials: true })
-      : axios.post("http://localhost:5000/api/members", form, { withCredentials: true });
+      ? axios.put(
+          `http://localhost:5000/api/members/${editingMember.id}`,
+          form,
+          { withCredentials: true }
+        )
+      : axios.post("http://localhost:5000/api/members", form, {
+          withCredentials: true
+        });
 
-    req.then(() => {
-      setShowModal(false);
-      fetchMembers();
-    }).catch(err => console.error(err));
+    req
+      .then(() => {
+        setShowModal(false);
+        fetchMembers();
+      })
+      .catch(err => console.error(err));
   };
 
   return (
@@ -74,28 +96,53 @@ function Members() {
         Meet our <TypeEffect />
       </p>
 
+      {/* tombol Add hanya untuk admin */}
+      {isAdmin && (
+        <div className="admin-controls">
+          <button className="add-btn" onClick={openAddModal}>
+            + Add Member
+          </button>
+        </div>
+      )}
+
       <div className="member-container">
-        {members.map((member) => (
+        {members.map(member => (
           <div className="member-card" key={member.id} data-aos="fade-down">
             <img src={member.photo_url} alt={member.name} />
             <h3>{member.name}</h3>
             <div className="tags">
-              <span className={`tag ${member.position?.toLowerCase().replace(/\s+/g, "-")}`}>
+              <span
+                className={`tag ${member.position
+                  ?.toLowerCase()
+                  .replace(/\s+/g, "-")}`}
+              >
                 {member.position}
               </span>
             </div>
             <p>{member.bio}</p>
 
-            {user.role === "admin" && (
+            {/* tombol Edit/Delete hanya untuk admin */}
+            {isAdmin && (
               <div className="btn-group">
-                <button className="edit-btn" onClick={() => openEditModal(member)}>Edit</button>
-                <button className="delete-btn" onClick={() => handleDelete(member.id)}>Delete</button>
+                <button
+                  className="edit-btn"
+                  onClick={() => openEditModal(member)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(member.id)}
+                >
+                  Delete
+                </button>
               </div>
             )}
           </div>
         ))}
       </div>
 
+      {/* Modal Add/Edit */}
       {showModal && (
         <div className="modal-backdrop">
           <div className="modal">
@@ -131,15 +178,16 @@ function Members() {
               />
               <div className="modal-buttons">
                 <button type="submit">Save</button>
-                <button type="button" className="cancel-btn" onClick={() => setShowModal(false)}>Cancel</button>
+                <button
+                  type="button"
+                  className="cancel-btn"
+                  onClick={() => setShowModal(false)}
+                >
+                  Cancel
+                </button>
               </div>
             </form>
           </div>
-        </div>
-      )}
-            {user.role === "admin" && (
-        <div className="admin-controls">
-          <button className="add-btn" onClick={openAddModal}>+ Add Member</button>
         </div>
       )}
     </section>

@@ -7,7 +7,7 @@ const db = require('../db/knex');
 // GET all members
 router.get('/', async (req, res) => {
   try {
-    const members = await db('members').select('*');
+    const members  = await db('members').select('*');
     res.json(members);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching members' });

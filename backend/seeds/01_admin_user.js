@@ -1,14 +1,15 @@
+// backend/seeds/01_users.js
 const bcrypt = require('bcryptjs');
 
 exports.seed = async function(knex) {
-  const hashedPassword = await bcrypt.hash('ccugADMIN', 10); // ganti sesuai keinginan
+  // Hapus semua user (jika ada)
+  await knex('users').del();
 
-  await knex('users').del(); // hapus data user dulu biar clean
+  // Hash password default
+  const hashed = await bcrypt.hash('ccugADMIN', 10);
+
+  // Insert admin user
   await knex('users').insert([
-    {
-      username: 'admin',
-      password: hashedPassword,
-      role: 'admin'
-    }
+    { username: 'admin', password: hashed, role: 'admin' }
   ]);
 };
