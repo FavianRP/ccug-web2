@@ -26,8 +26,96 @@ body {
     min-height: 100vh;
 }
 
+.add-btn {
+  background-color: #9a8ce2;
+  color: white;
+  width: 400px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-btn, .delete-btn {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Modal Styles */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: var(--bg);
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  color: black;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+}
+
+.modal form input,
+.modal form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.modal form button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal form button[type="submit"] {
+  background-color: #9a8ce2;
+  color: white;
+}
+
+.modal form button[type="button"] {
+  background-color: #ccc;
+}
+
 /* Members */
 .members {
+  margin-top: 0.5rem;
     text-align: center;
     padding: 50px 20px;
 }
@@ -127,77 +215,18 @@ body {
 }
 
 /* Tag Colors */
-.tag.red { background-color: #ff4d4d; }
-.tag.purple { background-color: #a855f7; }
-.tag.pink { background-color: #ff69b4; }
-.tag.gray { background-color: #808080; }
-.tag.blue { background-color: #3b82f6; }
-.tag.cyan { background-color: #06b6d4; }
-.tag.orange { background-color: #f97316; }
-.tag.green { background-color: #22c55e; }
-
-/* Footer */
-footer {
-    background-color: var(--bg);
-    border-top: 0.5px solid #a5a595;
-    text-align: center;
-    padding: 1rem 0 1rem;
-    margin-top: 3rem;
-    padding-bottom: 0rem;
-  }
-  
-  footer .row p {
-    font-weight: 400;
-    font-size: 12px;
-    color: #fff;
-  }
-  
-  footer .row .credit {
-    margin-top: 5px;
-    font-weight: 200;
-    font-size: 10px;
-    color: #fff;
-  }
-  
-  footer .row .copyright-symbol {
-    font-size: 12px; /* Ukuran simbol hak cipta */
-  }
-  
-  .heart-icon {
-    color: red; /* Mengisi ikon dengan warna merah */
-    width: 12px; /* Ukuran ikon */
-    height: 12px; /* Ukuran ikon */
-    fill: red; /* Mengisi warna ikon dengan merah */
-  }
-  
-  .footer-link {
-    text-decoration: none; /* Menghapus garis bawah */
-    color: #fff; /* Warna teks */
-    font-weight: 400;
-  }
-  
-  .footer-link:hover {
-    color: var(--primary); /* Mengubah warna teks saat hover */
-    text-decoration: underline; /* Menambahkan garis bawah saat hover */
-  }
-  
-  footer .socials {
-    padding: 1rem 0;
-  }
-  
-  footer .socials a {
-    color: #fff;
-  }
-  
-  footer .socials a:hover {
-    color: var(--primary);
-  }
-  
-  footer .credit {
-    font-size: 0.8rem;
-  }
-  
-  footer .credit a {
-    color: var(--bg);
-    font-weight: 700;
-  }
+.tag-crypto {
+  background-color: #6b21a8; /* ungu */
+}
+.tag-pwn {
+  background-color: #ea580c; /* oranye */
+}
+.tag-forensic {
+  background-color: #0284c7; /* biru */
+}
+.tag-web {
+  background-color: #ffe600; /* kuning */
+}
+.tag-default {
+  background-color: #6b7280; /* abu-abu */
+}

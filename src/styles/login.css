@@ -1,6 +1,17 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Roboto Mono", serif;
+}
+
 .login-container {
-  width: 300px;
-  margin: 100px auto;
+  width: 800px;
+  margin: 300px auto;
   padding: 20px;
   border-radius: 10px;
   background-color: #222;

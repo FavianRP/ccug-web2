@@ -8,6 +8,7 @@ import AboutUs from "./pages/aboutus.js";
 import Members from "./pages/members.js";
 import Contest from "./pages/contest.js";
 import Blog from "./pages/blog.js";
+import Login from "./pages/loginccug.js";
 import feather from "feather-icons";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -21,12 +22,13 @@ function TitleUpdater() {
   useEffect(() => {
     // Mapping judul berdasarkan path
     const titles = {
-      "/": "Cyber Community Universitas Gunadarama",
+      "/": "Cyber Community Universitas Gunadarma",
       "/aboutus": "CCUG - About Us",
       "/gettingstarted": "getting_started",
       "/members": "CCUG - Members",
       "/contest": "CCUG - Contest",
       "/blog": "CCUG - Blog",
+      "/loginccug": "CCUG - Login",
     };
 
     document.title = titles[location.pathname] || "Cyber Community";
@@ -52,6 +54,7 @@ function App() {
         <Route path="/members" element={<Members />} />
         <Route path="/contest" element={<Contest />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/loginccug" element={<Login />} />
       </Routes>
       <Footer />
     </Router>
