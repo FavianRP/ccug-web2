@@ -13,9 +13,10 @@ const blogsRoutes = require('./routes/blogs');
 
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:3000', // sesuaikan dengan URL React kamu
-    credentials: true
-  }));  
+  origin: 'http://localhost:3000', // Ganti dengan URL frontend
+  credentials: true // Izinkan cookie
+}));
+app.use(cookieParser()); // Aktifkan parsing cookie  
 app.use(express.json());
 app.use(express.static('public'));
 app.use(verifyToken); // aktifkan global atau hanya untuk route tertentu
@@ -31,8 +32,8 @@ app.use(session({
   }));
 
 app.use('/api/auth', authRoutes);
-app.use('/api/members', membersRoutes);
-app.use('/api/contests', contestsRoutes);
+app.use('/api/members', verifyToken, membersRoutes);
+app.use('/api/contests', verifyToken, contestsRoutes);
 app.use('/api/blogs', blogsRoutes);
 
 const PORT = process.env.PORT || 5000;
