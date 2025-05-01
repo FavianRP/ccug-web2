@@ -5,7 +5,7 @@ const { verifyToken } = require('../middleware/auth');
 
 // Login dan Logout
 router.post('/login', login);
-router.post('/logout', logout);
+router.post('/logout', logout, verifyToken );
 
 // Route untuk mendapatkan data user yang sedang login
 router.get('/me', verifyToken, (req, res) => {

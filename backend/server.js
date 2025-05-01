@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const cookieParser = require('cookie-parser');
-const verifyToken = require('./middleware/verifyToken');
 const session = require('express-session');
 
 const authRoutes = require('./routes/auth');
@@ -18,7 +17,6 @@ app.use(cors({
   }));  
 app.use(express.json());
 app.use(express.static('public'));
-app.use(verifyToken); // aktifkan global atau hanya untuk route tertentu
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
