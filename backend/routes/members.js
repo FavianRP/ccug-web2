@@ -23,7 +23,7 @@ router.post('/', verifyToken, isAdmin, async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Error creating member' });
   }
-});
+}, verifyToken);
 
 // UPDATE member (Admin only)
 router.put('/:id', verifyToken, isAdmin, async (req, res) => {
@@ -34,7 +34,7 @@ router.put('/:id', verifyToken, isAdmin, async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Error updating member' });
   }
-});
+}, verifyToken);
 
 // DELETE member (Admin only)
 router.delete('/:id', verifyToken, isAdmin, async (req, res) => {
@@ -44,6 +44,6 @@ router.delete('/:id', verifyToken, isAdmin, async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Error deleting member' });
   }
-});
+}, verifyToken);
 
 module.exports = router;

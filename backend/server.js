@@ -12,9 +12,10 @@ const blogsRoutes = require('./routes/blogs');
 
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:3000', // sesuaikan dengan URL React kamu
-    credentials: true
-  }));  
+  origin: 'http://localhost:3000', // Ganti dengan URL frontend
+  credentials: true // Izinkan cookie
+}));
+app.use(cookieParser()); // Aktifkan parsing cookie  
 app.use(express.json());
 app.use(express.static('public'));
 app.use(session({
